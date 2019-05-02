@@ -1,6 +1,5 @@
 import sys
 
-
 while(True):
   def main():
     for line in sys.stdin:
