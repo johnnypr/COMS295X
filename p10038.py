@@ -1,38 +1,32 @@
 import sys
 
+def load_nums():
+    num_str = sys.stdin.readline()
+    if num_str == '\n' or num_str=='':
+        return None
 
-def main():
-  for line in sys.stdin:
-    input = line.split()
-    if not input:
-      break
-    n = int(input[0])
-    sequence = input[1:]
-    sequence = list(map(int,sequence))
-  return checkJolly(n,sequence)
+    return list(map(int, num_str.rstrip().split()))
 
 
-def checkJolly(n,sequence):
-  set = []
-  diff = 0
-  4
-  for i in range(n-1):
-    set.append(i+1)
+def is_jolly(numbers):
+    
+    sub = set([abs(b-a) for a, b in zip(numbers, numbers[1:])])
+   
+    for n in range(1, len(numbers)):
+        if n not in sub:
+            return False
 
-  if not set:
-    return "Jolly"
-  
-  for index in range(n): 
-    diff = abs(sequence[index]-sequence[index+1])
-    if (diff in set):
-      set.remove(diff)
-      if not set:
-        return "Jolly"
-    else:
-      return "Not Jolly"
- 
-      
+    return True
+
 
 if __name__ == '__main__':
-  print(main())
-    
+
+    while True:
+        numbers = load_nums()
+        if numbers is None:
+            break
+
+        if is_jolly(numbers[1:]):
+            print("Jolly")
+        else:
+            print("Not jolly")

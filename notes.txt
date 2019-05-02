@@ -1,0 +1,42 @@
+def main():
+  lines = []
+  while True:
+    s =input()
+    if s:
+      lines.append(s.split())
+    else:
+      break;
+  index = 0
+  for i in lines:
+    n = int(lines[index][0])
+    sequence = lines[index][1:]
+    print(checkJolly(n,sequence))
+    index +=1;
+
+def checkJolly(n,sequence):
+  # print(n)
+  # print(sequence)
+  set = []
+  diff = 0
+  4
+  for i in range(n-1):
+    set.append(i+1)
+
+  if not set:
+    return "Jolly"
+  
+  for index in range(n): 
+    diff = abs(int(sequence[index])-int(sequence[index+1]))
+    if (diff in set):
+      set.remove(diff)
+      if not set:
+        return "Jolly"
+    else:
+      return "Not jolly"
+ 
+      
+
+if __name__ == '__main__':
+  main()
+  print()
+    
