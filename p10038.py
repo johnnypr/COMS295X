@@ -1,8 +1,13 @@
 import sys
 
+def main():
+  for line in sys.stdin:
+    input = line.split()
+    
 
-while (True):
-    stdIn = input()
+
+if __name__ == '__main__':
+  main()
     
 
 
