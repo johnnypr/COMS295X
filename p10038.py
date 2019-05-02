@@ -1,16 +1,17 @@
 import sys
 
 
-def main():
-  for line in sys.stdin:
-    input = line.strip("\n")
-    input = input.split()
-    if not input:
-      break
-    n = int(input[0])
-    sequence = input[1:]
-    sequence = list(map(int,sequence))
-  return checkJolly(n,sequence)
+while(True):
+  def main():
+    for line in sys.stdin:
+      input = line.strip("\n")
+      input = input.split()
+      if not input:
+        break
+      n = int(input[0])
+      sequence = input[1:]
+      sequence = list(map(int,sequence))
+    return checkJolly(n,sequence)
 
 
 def checkJolly(n,sequence):
