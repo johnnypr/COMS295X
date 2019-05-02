@@ -1,56 +1,39 @@
 import sys
 
-def main():
-  for line in sys.stdin:
-    input = line.split()
-    
 
+def main():
+  for line in sys.stdin.readline():
+    input = line.split()
+    if not input:
+      break
+    n = int(input[0])
+    sequence = input[1:]
+    sequence = list(map(int,sequence))
+  return(checkJolly(n,sequence))
+
+
+def checkJolly(n,sequence):
+  set = []
+  diff = 0
+
+  for i in range(n-1):
+    set.append(i+1)
+
+  for index in range(n):
+    if not set:
+      return "Jolly"
+      
+    diff = abs(sequence[index]-sequence[index+1])
+    
+    if (diff in set):
+      set.remove(diff)
+      if not set:
+        return "Jolly"
+    else:
+      return "Not Jolly"
+ 
+      
 
 if __name__ == '__main__':
-  main()
+  print(main())
     
-
-
-
-
-
-
-    # # User input
-    # stdIn = sys.stdin.readline()
-    # # Breaks if empty line
-    # if stdIn == "\n":
-    #     break
-    
-    
-    # input = stdIn.strip().split()
-    # arr = []
-
-    # n = 0
-      
-    # for x in range(len(input)-1):
-    #     arr.append(int(input[x+1]))
-    #     n += 1;
-        
-    # diff = 0
-    # set =[]
-    
-    # for x in range(n-1):
-    #     set.append(x+1)
-    
-    # for x in range(n-1): 
-      
-    #     if (x == 1):
-    #         print("Jolly")
-    #         break
-        
-    #     diff = abs(arr[x] - arr[x +1])
-    #     if (diff in set):
-    #         set.remove(diff)
-    #         if (len(set)==0):
-    #             print("Jolly")
-    #             break
-    #         else:
-    #             continue
-    #     else:   
-    #         print("Not jolly")
-    #         break
