@@ -1,42 +1,56 @@
-def main():
-  lines = []
-  while True:
-    s =input()
-    if s:
-      lines.append(s.split())
-    else:
-      break;
-  index = 0
-  for i in lines:
-    n = int(lines[index][0])
-    sequence = lines[index][1:]
-    print(checkJolly(n,sequence))
-    index +=1;
-
-def checkJolly(n,sequence):
-  # print(n)
-  # print(sequence)
-  set = []
-  diff = 0
-  4
-  for i in range(n-1):
-    set.append(i+1)
-
-  if not set:
-    return "Jolly"
-  
-  for index in range(n): 
-    diff = abs(int(sequence[index])-int(sequence[index+1]))
-    if (diff in set):
-      set.remove(diff)
-      if not set:
-        return "Jolly"
-    else:
-      return "Not jolly"
- 
-      
-
-if __name__ == '__main__':
-  main()
-  print()
-    
+[h, p, v]
+[e, h, c]
+[u, o, n]
+3 2
+[j, a, j, p, j, p, v, d]
+[w, j, v, h, y, o, w, l]
+[y, z, m, z, r, q, d, g]
+[r, x, p, m, i, q, c, o]
+[r, k, g, c, z, l, m, g]
+[k, r, j, r, k, z, k, r]
+[d, i, m, j, f, q, m, y]
+[d, c, a, h, a, z, y, q]
+[u, o, l, w, u, k, m, h]
+3 6
+[w, i, k, a, n, b, o, m, s, i]
+[b, r, f, a, m, v, j, y, g, n]
+[l, z, f, u, o, w, e, q, r, w]
+[l, q, z, p, p, a, y, e, l, f]
+[g, u, r, y, f, q, o, n, x, w]
+[l, s, v, r, z, l, a, u, s, e]
+[n, o, f, q, h, t, i, e, k, o]
+2 8
+4 7
+2 2
+[r, a, q, c, t, n, s, h]
+[t, w, w, o, i, y, n, o]
+[o, t, e, w, w, k, m, i]
+[o, b, c, v, g, v, d, b]
+[c, x, u, d, f, f, j, z]
+[v, l, v, p, e, y, w, b]
+[x, e, s, i, y, r, h, g]
+[v, e, c, v, g, q, w, a]
+4 2
+[h]
+[t]
+[y]
+[a]
+[a]
+[u]
+[k]
+[o]
+[c]
+[f]
+2 1
+[g, c, t, e, b, j, m, l, b, x]
+[g, w, v, w, u, e, b, v, o, t]
+[e, y, w, p, e, m, l, s, g, c]
+[i, b, r, g, z, y, h, z, l, f]
+[e, b, d, w, k, j, i, h, m, i]
+[p, s, i, c, i, k, a, e, g, o]
+[c, m, o, o, i, p, j, w, d, m]
+[h, a, j, o, g, h, g, u, q, z]
+1 1
+[c, l, c, j]
+[g, h, t, t]
+[x, h, o, p]
