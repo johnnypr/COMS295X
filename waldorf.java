@@ -1,9 +1,8 @@
-package unit3;
 import java.util.*;
 import java.io.*;
 
 
-public class waldorf {
+class waldorf {
     public static int checkFHorizontal(char[][] grid,String word,int x, int y,int rows, int columns){
         int end = 0;
 
