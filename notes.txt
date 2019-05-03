@@ -54,3 +54,17 @@
 [c, l, c, j]
 [g, h, t, t]
 [x, h, o, p]
+
+
+
+
+
+
+
+
+Single Line Inputs:
+    def readLine():
+        stdIn = sys.stdin.readline()
+        if stdIn=='' or stdIn == "\n":
+            return None
+        return list(map(int,stdIn.rstrip().split()))
