@@ -90,7 +90,7 @@ public class waldorf {
     }
 
 
-    public static String findWords(char[][] grid,String[] words, int row , int column){
+    public static void findWords(char[][] grid,String[] words, int row , int column){
         
         for (int index = 0; index < words.length; index++){
             int wordIndex = index;
@@ -98,26 +98,36 @@ public class waldorf {
             for(int r = 0; r<row;r++){
                 for(int c= 0; c<column;c++){
                     if (grid[r][c] == words[wordIndex].charAt(0)){
-                        if(w)
+                        System.out.println(words[wordIndex]);
+                        if(wordIndex == 1){
+                            System.out.println((r+1) + " " + (c+1));
+                            
+                            continue;
+                        }
                          if (checkFHorizontal(grid, words[wordIndex], r, c,row,column) != 0){
                         System.out.println(((r+1) + " " + (c+1)));
+                        continue;
                         }
                     
                         if (checkRHorizontal(grid, words[wordIndex], r, c,row,column) != 0){
                             System.out.println(((r+1) + " " + (c+1)));
+                            continue;
                         }
                     
                         if (checkVertical(grid, words[wordIndex], r, c,row,column) != 0){
                             System.out.println(((r+1) + " " + (c+1)));
+                            continue;
                         }
                     
                         if (checkDecline(grid, words[wordIndex], r, c,row,column) != 0){
                             System.out.println(((r+1) + " " + (c+1)));
+                            continue;
                         }
                     
                         if (checkIncline(grid, words[wordIndex], r, c,row,column) != 0){
                             System.out.println(((r+1) + " " + (c+1)));
-                        } 
+                            continue;
+                        }
 
                     }
                 }
@@ -126,7 +136,7 @@ public class waldorf {
         
             
         }
-        return "";
+        return;
     }
 
 
@@ -140,8 +150,7 @@ public class waldorf {
 
         Scanner scn = new Scanner(file);
         testcases = scn.nextInt();
-        System.out.println(testcases);
-
+        
         while(testcases > 0){
             x = scn.nextInt();
             y = scn.nextInt();
@@ -176,13 +185,14 @@ public class waldorf {
                 words[z] = word.toLowerCase();
             }
 
-            System.out.println(x + " and " + y);
-            for(int a = 0; a < x; a++){
-                System.out.println(Arrays.toString(grid[a]));
-            }
-            System.out.println(Arrays.deepToString(words));
-
-            System.out.println(findWords(grid, words, x, y));
+            
+            
+            findWords(grid, words, x, y);
+            System.out.println("\n");
+                
+    
+    
+            
             testcases -=1;
         
         }

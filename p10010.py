@@ -31,30 +31,30 @@ def readLine():
     if stdIn=='':
         return None
     elif stdIn != '\n':
-        stdIn = stdIn.rstrip().split()
+        stdIn = list(map(str,stdIn.rstrip().split())
     return stdIn
 
 
 if __name__ == '__main__':
     while True:
         data = readLine()
-        rows = int(data[1])
-        columns =int(data[2])
+        # rows = int(data[1])
+        # columns =int(data[2])
 
-        index = 0
-        for x in range(rows):
-            for y in range(columns):
-                grid[x][y] = data[index].lower()
-                index += 1
+        # index = 0
+        # for x in range(rows):
+        #     for y in range(columns):
+        #         grid[x][y] = data[index].lower()
+        #         index += 1
         
-        n = int(data[index+1])
-        words = []
-        for word in range(n):
-            words[word] = data[index + 1]
-            index += 1
+        # n = int(data[index+1])
+        # words = []
+        # for word in range(n):
+        #     words[word] = data[index + 1]
+        #     index += 1
 
-        print(grid)
+        # print(grid)
         
-        if data is None:
-            break
+        # if data is None:
+        #     break
         
