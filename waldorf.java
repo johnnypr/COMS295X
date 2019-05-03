@@ -2,11 +2,14 @@ import java.util.*;
 import java.io.*;
 
 
-class waldorf {
+public class waldorf {
+
+
+    //-----------------------------Assume positions-------------------------------------//
     public static int checkFHorizontal(char[][] grid,String word,int x, int y,int rows, int columns){
         int end = 0;
 
-        if (y<columns-word.length()){
+        if (y<=word.length()){
             for(int i = 1; i<word.length();i++){
                 if (grid[x][y+i] != word.charAt(i)){ 
                     end = 0;
@@ -22,7 +25,7 @@ class waldorf {
         int end = 0;
         
        
-        if(y>= columns - word.length()){
+        if(y >=columns - word.length()){
     
             for(int i = 1; i<word.length();i++){
                 if (grid[x][y-i] != word.charAt(i)){ 
@@ -40,7 +43,7 @@ class waldorf {
         int end = 0;
        
 
-        if (x<=rows-word.length()){
+        if (x<=word.length()){
             for(int i = 1; i<word.length();i++){
                 if (grid[x+i][y] != word.charAt(i)){
                     end =0;
@@ -55,7 +58,7 @@ class waldorf {
         int end = 0;
         
         
-            if (y>word.length()&& x<=row-word.length()){
+            if (yword.length()&& x<=row-word.length()){
         
                 for(int i = 1; i<word.length();i++){
                     if (grid[x+i][y-i] != word.charAt(i)){
@@ -75,7 +78,6 @@ class waldorf {
 
         
 
-
         if (y<=column-word.length() && x<=row-word.length()){
             for(int i = 1; i<word.length();i++){
                 if (grid[x+i][y+i] != word.charAt(i)){
@@ -89,48 +91,120 @@ class waldorf {
     }
 
 
-    public static String findWords(char[][] grid,String[] words, int row , int column){
-        
-        for (int index = 0; index < words.length; index++){
-            int wordIndex = index;
-        
-            for(int r = 0; r<row;r++){
-                for(int c= 0; c<column;c++){
-                    if (grid[r][c] == words[wordIndex].charAt(0)){
-                        if(w)
-                         if (checkFHorizontal(grid, words[wordIndex], r, c,row,column) != 0){
-                        System.out.println(((r+1) + " " + (c+1)));
-                        }
-                    
-                        if (checkRHorizontal(grid, words[wordIndex], r, c,row,column) != 0){
-                            System.out.println(((r+1) + " " + (c+1)));
-                        }
-                    
-                        if (checkVertical(grid, words[wordIndex], r, c,row,column) != 0){
-                            System.out.println(((r+1) + " " + (c+1)));
-                        }
-                    
-                        if (checkDecline(grid, words[wordIndex], r, c,row,column) != 0){
-                            System.out.println(((r+1) + " " + (c+1)));
-                        }
-                    
-                        if (checkIncline(grid, words[wordIndex], r, c,row,column) != 0){
-                            System.out.println(((r+1) + " " + (c+1)));
-                        } 
+    //new methods for edge cases
+    public static int checkFIncline(char[][] grid,String word,int x, int y,int row, int column){
+        int top = 0;
 
-                    }
-                }
-           
-            }
         
-            
+
+        if (y>=column-word.length() && x>=row-word.length()){
+            for(int i = 1; i<word.length();i++){
+                if (grid[x+i][y+i] != word.charAt(i)){
+                    return top;
+                }   
+                top = y+i;
+            }
         }
-        return "";
+        return top;
+    }
+
+    public static int checkFDecline(char[][] grid,String word,int x, int y,int row, int column){
+        int top = 0;
+
+        if (y>=column-word.length() && x>=row-word.length()){
+            for(int i = 1; i<word.length();i++){
+                if (grid[x-i][y+i] != word.charAt(i)){
+                    return top;
+                }   
+                top = y+i;
+            }
+        }
+        return top;
+
     }
 
 
+    public static int checkFVertical(char[][] grid,String word,int x, int y,int row, int column){
+        int end = 0;
+       
 
-    public static void main(String[] args) throws FileNotFoundException { 
+        if (x<=rows-word.length()){
+            for(int i = 1; i<word.length();i++){
+                if (grid[x+i][y] != word.charAt(i)){
+                    end =0;
+                    return end;
+                }
+                end = y+i;
+            }
+        }
+        return end;
+    }
+
+    //------------------------------find words----------------------------------------//
+
+    public static void findWords(char[][] grid,String[] words, int row , int column){
+        
+
+        search: 
+            for (int index = 0; index < words.length; index++){
+                int wordIndex = index;
+                
+            
+                for(int r = 0; r<row;r++){
+                    for(int c= 0; c<column;c++){
+
+
+                        if (grid[r][c] == words[wordIndex].charAt(0)){
+                            System.out.println(words[wordIndex]);
+                            
+                            if(words[wordIndex].length() <= 1){
+                                System.out.println((r+1) + " " + (c+1));
+                                continue search;
+                            }
+
+
+                            if (checkFHorizontal(grid, words[wordIndex], r, c,row,column) != 0){
+                                System.out.println(((r+1) + " " + (c+1)));
+                                continue search;
+                            
+                            }
+                        
+                            if (checkRHorizontal(grid, words[wordIndex], r, c,row,column) != 0){
+                                System.out.println(((r+1) + " " + (c+1)));
+                                continue search;
+                                
+                            }
+                        
+                            if (checkVertical(grid, words[wordIndex], r, c,row,column) != 0){
+                                System.out.println(((r+1) + " " + (c+1)));
+                                continue search;
+                                
+                            }
+                        
+                            if (checkDecline(grid, words[wordIndex], r, c,row,column) != 0){
+                                System.out.println(((r+1) + " " + (c+1)));
+                                continue search;
+                                
+                            }
+                        
+                            if (checkIncline(grid, words[wordIndex], r, c,row,column) != 0){
+                                System.out.println(((r+1) + " " + (c+1)));
+                                continue search;
+                                
+                            }
+
+                        }
+                    }
+            
+                }
+                
+            }
+            return;
+        }
+
+
+
+public static void main(String[] args) throws FileNotFoundException { 
         File file = new File("input.txt");
         ArrayList<String> data = new ArrayList<String>();
         String line;
@@ -139,8 +213,7 @@ class waldorf {
 
         Scanner scn = new Scanner(file);
         testcases = scn.nextInt();
-        System.out.println(testcases);
-
+        
         while(testcases > 0){
             x = scn.nextInt();
             y = scn.nextInt();
@@ -175,19 +248,14 @@ class waldorf {
                 words[z] = word.toLowerCase();
             }
 
-            System.out.println(x + " and " + y);
-            for(int a = 0; a < x; a++){
-                System.out.println(Arrays.toString(grid[a]));
-            }
-            System.out.println(Arrays.deepToString(words));
-
-            System.out.println(findWords(grid, words, x, y));
+            
+            findWords(grid, words, x, y);
+            System.out.println("\n");
+                        
             testcases -=1;
         
         }
         scn.close();
-
-        
 
     }
     
