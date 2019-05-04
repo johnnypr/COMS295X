@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class P10010 {
+public class Main {
 
 	static char[][] board = new char[52][52];
 	static char i,j,words;
