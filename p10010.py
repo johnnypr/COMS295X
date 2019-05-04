@@ -28,11 +28,10 @@ import sys
 # data = []
 
 def readLine():
-    stdIn = sys.stdin.readline()
-    if stdIn=='':
+    stdIn = sys.stdin.readline().split()
+    if not stdIn:
         return None
-    elif stdIn != '\n':
-        stdIn = list(map(str,stdIn.rstrip().split())
+        stdIn = list(stdIn.rstrip())
     return stdIn
 
 

@@ -14,7 +14,7 @@ num_keyboard = {'1':'`','2':'1','3':'2',
 'K':'J','L':'K',';':'L','\'':';',
 'X':'Z','C':'X','V':'C','B':'V',
 'N':'B','M':'N',',':'M','.':',',
-'/':'.', ' ':' '}
+'/':'.', ' ':' ','A':'\'','Q':'Q','A':'A','Z':'Z'}
 
 
 def readLine():
@@ -41,6 +41,5 @@ if __name__ == "__main__":
         usr = readLine()
         if usr == None:
             break
-        print(usr )
         answer = (decrypt(usr))
         print(answer)
