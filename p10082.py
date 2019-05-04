@@ -1,7 +1,7 @@
 import sys
 
 
-num_keyboard = {'1':'`','2':'1','3':'2',
+keyboard = {'1':'`','2':'1','3':'2',
 '4':'3','5':'4','6':'5',
 '7':'6','8':'7','9':'8',
 '0':'9','-':'0','=':'-',
@@ -14,33 +14,8 @@ num_keyboard = {'1':'`','2':'1','3':'2',
 'K':'J','L':'K',';':'L','\'':';',
 'X':'Z','C':'X','V':'C','B':'V',
 'N':'B','M':'N',',':'M','.':',',
-'/':'.', ' ':' '}
+'/':'.', ' ':' ', '\n':'\n'}
 
 
-def readLine():
-    stdIn = sys.stdin.readline()
-    if stdIn == '\n' or stdIn==' ':
-        return None
-    return list(stdIn.rstrip())
-
-
-
-def decrypt(arr):
-    message = ""
-    for i in range(len(arr)):
-        character = arr[i].capitalize()
-        x = num_keyboard[character]
-        message += x
-    return message
-
-
-
-
-if __name__ == "__main__":
-    while True:
-        usr = readLine()
-        if usr == None:
-            break
-        print(usr )
-        answer = (decrypt(usr))
-        print(answer)
+for line in sys.stdin:
+    print("".join(map(lambda z: keyboard[z], line[:-1])))
