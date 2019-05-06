@@ -20,7 +20,6 @@ def is_jolly(numbers):
 
 
 if __name__ == '__main__':
-
     while True:
         numbers = load_nums()
         if numbers is None:
